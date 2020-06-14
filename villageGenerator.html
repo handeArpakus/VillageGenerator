@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+
+attribute vec4 vPosition;
+attribute vec4 vColor;
+
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_Position = vPosition;
+    fColor = vColor;
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+
+precision mediump float;
+
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="webgl-utils.js"></script>
+<script type="text/javascript" src="initShaders.js"></script>
+<script type="text/javascript" src="MV.js"></script>
+<script type="text/javascript" src="villageGenerator.js"></script>
+
+<body>
+<canvas id="gl-canvas" width="720" height="512" style="color: red;">>
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<div>
+Max width for the river:  0% <input id="slidermax" type="range"
+ min="0" max="100" step="10" value="50" />
+ 100%
+</div>
+
+<div>
+Min width for the river:  0% <input id="slidermin" type="range"
+ min="0" max="100" step="10" value="50" />
+ 100%
+</div>
+</br>
+<input type = "button" value = "Draw River" id="riverButton">
+</br>
+</br>
+<form>
+	<label for="circleNum">Circle number: </label>
+	<input type="text" name="circle" id="circleNum">
+	<input type = "button" value = "Draw Circles" id="circleNumber">
+	<select id="appearance" name="crc">
+		<option value = "visible"> Visible </option>
+		<option value = "invisible"> Invisible </option>
+	</select>
+	
+</form>
+</br>
+<div>
+	<label for ="attractor" > Choose the kind of attractor: </label>
+	<select id="attractor" name="attractor">
+		<option value = "house"> House </option>
+		<option value = "tree"> Tree </option>
+		<option value = "rock"> Rock </option>
+	</select>
+	and click the canvas. Then click the 'Village' button to see your village!
+</div>
+</br>
+<div>
+	<input type = "button" value = "Village" id="village">
+</div>
+</body>
+</html>
